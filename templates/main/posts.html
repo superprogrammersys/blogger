@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}posts -website{% endblock %}
+{% block content %}
+if user.is_authenticated %}
+<li><a href="{% url 'new_post' %}">new post</a></li>
+<h2>posts</h2>
+<div>
+{% for post in posts %}
+<dive>
+    <h3><a href="{% url 'post' post.pk %}">{{post.title}}</a></h3>
+    published in: {{post.publish_date}} by:{{post.user}}
+</dive>
+{% empty %}
+no posts yet...
+{% endfor %}
+</div>
+{% endblock %}

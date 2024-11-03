@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}{{post.title}} - website{% endblock %}
+{% block content %}
+<h2>{{post.title}}</h2>
+published in :{{post.publish_date}}
+<pre>
+    {{post.body}}
+</pre>
+<h3>comments</h3>
+<div>
+    {% for comment in comments %}
+    <div>
+    <h4>{{comment.user}}</h4>
+    <pre>
+        {{comment.content}}
+    </pre>
+</div>
+{% empty %}
+<h4>no comments</h4>
+{% endfor %}
+</div>
+<h3>add a comment</h3>
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type=""submit">send comment</button>
+</form>
+{% endblock %}
