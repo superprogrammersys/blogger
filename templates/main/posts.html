@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}posts -website{% endblock %}
 {% block content %}
-if user.is_authenticated %}
+{% if user.is_authenticated %}
 <li><a href="{% url 'new_post' %}">new post</a></li>
+{% endif %}
 <h2>posts</h2>
 <div>
 {% for post in posts %}
